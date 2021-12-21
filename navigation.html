@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+.block {
+	border: solid 2px transparent;
+	width: fit-content;
+}
+
+/* indent... */
+div.block div.block {
+	margin-left: 2em;
+}
+
+.block:focus {
+	border: solid 2px red;
+}
+
+</style>
+
+<script>
+
+var focusSiblingOfClass = function(recur, direction, go_up=true){
+	return function(target, focus=true){
+		//var elem = target[direction]
+		// if at non-block get first block...
+		// XXX should be: "get first/last ..."
+		var elem = !target.classList.contains('block') ?
+			document.querySelector('.block')
+			: target[direction]
+		var prev
+		// get next element...
+		while(elem && !elem.classList.contains('block')){
+			prev = elem
+			elem = elem[direction] }
+		// focus...
+		elem && focus
+			&& elem.focus() 
+		// go up...
+		// XXX should we als step to some direction????
+		!elem && go_up
+			&& (elem = this.ArrowLeft(target))
+		return elem 
+			|| prev }}
+
+var KEY_HANDLERS = {
+	// XXX would be nice to wrap around on up/down...
+	ArrowUp: focusSiblingOfClass('ArrowUp', 'previousElementSibling'),
+	ArrowDown: focusSiblingOfClass('ArrowDown', 'nextElementSibling'),
+	ArrowLeft: focusSiblingOfClass('ArrowLeft', 'parentElement', false),
+	ArrowRight: function(target){
+		var elem = target.querySelector('.block')
+		elem ? 
+			elem.focus()
+			: (elem = this.ArrowDown(target))
+		return elem
+			|| target },
+}
+
+window.addEventListener('keyup', function(evt){
+	evt.key in KEY_HANDLERS
+		&& KEY_HANDLERS[evt.key](evt.target) })
+
+</script>
+
+<body>
+
+<i>Basic tab-navigation via built-in html mechanics...</i>
+
+<hr>
+
+<div class="block" tabindex=0>
+	block
+	<div class="block" tabindex=0>
+		sub-block
+	</div>
+	<div class="block" tabindex=0>
+		sub-block
+	</div>
+</div>
+
+<hr>
+
+<div class="block" tabindex=0>
+	// 
+	<span class="block" tabindex=0>
+		not sure how atomic we should get, feels a bit too complicated...
+	</span>
+</div>
+<div class="block" tabindex=0>
+	for(
+	<span class="block" tabindex=0>
+		<span class="block" tabindex=0>
+			var
+			<span class="block" tabindex=0>
+				<span class="block" tabindex=0>
+					i
+				</span>
+				=
+				<span class="block" tabindex=0>
+					0
+				</span>
+			</span>
+		</span>
+	</span>;
+	<span class="block" tabindex=0>
+		<span class="block" tabindex=0>
+			<span class="block" tabindex=0>
+				i
+			</span>
+			&lt; 
+			<span class="block" tabindex=0>
+				10
+			</span>
+		</span>
+	</span>;
+	<span class="block" tabindex=0>
+		<span class="block" tabindex=0>
+			<span class="block" tabindex=0>
+				i
+			</span>
+			++
+		</span>
+	</span>){
+	<div class="block" tabindex=0>
+		console.log(
+			<span class="block" tabindex=0>
+				'---'
+			</span>,
+			<span class="block" tabindex=0 contenteditable>
+				i
+			</span>)	
+	</div>}
+</div>
+
+
+</body>
+</html>
+<!-- vim:set ts=4 sw=4 : -->
