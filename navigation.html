@@ -20,7 +20,10 @@ div.block div.block {
 
 <script>
 
-var focusSiblingOfClass = function(recur, direction, go_up=true){
+// XXX select editable item on focus...
+
+var focusSiblingOfClass = 
+function(recur, direction, onFail=false){
 	return function(target, focus=true){
 		//var elem = target[direction]
 		// if at non-block get first block...
@@ -36,18 +39,44 @@ var focusSiblingOfClass = function(recur, direction, go_up=true){
 		// focus...
 		elem && focus
 			&& elem.focus() 
-		// go up...
-		// XXX should we als step to some direction????
-		!elem && go_up
-			&& (elem = this.ArrowLeft(target))
+		// no elements found...
+		!elem && onFail
+			&& (elem = onFail.call(this, target))
 		return elem 
 			|| prev }}
 
+// XXX there can be to two control schemes here:
+//			- hierarchical (current)
+//				follows element topology
+//				fast
+//				might not be obvious visually without diving into context
+//			- visual
+//		...which is better may also depend on topology, e.g. for the for 
+//		loop example below the args can be on the same level as block or 
+//		between the block and the loop (i.e. a-la attrs)...
 var KEY_HANDLERS = {
-	// XXX would be nice to wrap around on up/down...
-	ArrowUp: focusSiblingOfClass('ArrowUp', 'previousElementSibling'),
-	ArrowDown: focusSiblingOfClass('ArrowDown', 'nextElementSibling'),
-	ArrowLeft: focusSiblingOfClass('ArrowLeft', 'parentElement', false),
+	// XXX split actions and mappings...
+	//		- rename current handlers...
+	//		- map key to handler...
+
+	ArrowUp: focusSiblingOfClass(
+		'ArrowUp', 
+		'previousElementSibling',
+		// when at top elem in block select block...
+		// XXX would be nice to wrap around on up -- focus last top-level block...
+		function(target){
+			return this.ArrowLeft(target) }),
+	ArrowDown: focusSiblingOfClass(
+		'ArrowDown', 
+		'nextElementSibling',
+		// when at last elem select next...
+		function(target){
+			return this.ArrowDown(
+				this.ArrowLeft(target, false)) }),
+	// XXX should this destingwisth orientations and topology???
+	//	...i.e. move to left block and only after move up???
+	// XXX whe reaching top most element, should we go up???
+	ArrowLeft: focusSiblingOfClass('ArrowLeft', 'parentElement'),
 	ArrowRight: function(target){
 		var elem = target.querySelector('.block')
 		elem ? 
@@ -57,9 +86,14 @@ var KEY_HANDLERS = {
 			|| target },
 }
 
-window.addEventListener('keyup', function(evt){
-	evt.key in KEY_HANDLERS
-		&& KEY_HANDLERS[evt.key](evt.target) })
+window.addEventListener('keydown', function(evt){
+	// expand aliases...
+	var handler = evt.key
+	while(typeof(handler) == 'string'){
+		handler = KEY_HANDLERS[handler] }
+	// call the handler...
+	handler
+		&& handler.call(KEY_HANDLERS, evt.target) })
 
 </script>
 
