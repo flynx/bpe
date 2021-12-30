@@ -30,7 +30,14 @@ div.block div.block {
 //		- replace (compatible)
 //		- remove
 //		- edit whole (and reparse)
+//	- ui: buttons
 //
+//
+// XXX might be a good idea to create a custom element template...
+// XXX might be a good idea to split items/slots into blocks and inline...
+//		...the idea is to avoid a full blown language parser at first
+//		and see if a simplish structure will be good enough to model the
+//		target language(s)...
 //
 //---------------------------------------------------------------------
 
@@ -39,7 +46,7 @@ div.block div.block {
 //				can define language structures...
 //			- language-specific elements
 // XXX select editable item content on focus...
-// XXX test touch operation...
+// XXX touch operation...
 
 var focusSiblingOfClass = 
 function(recur, direction, onFail=false){
