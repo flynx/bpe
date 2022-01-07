@@ -134,32 +134,65 @@ window.addEventListener('keydown', function(evt){
 
 <body>
 
-<div class=templates">
+<div class="templates">
 
 	<!-- for counter -->
-	<div title="for( .. ; .. ; .. )" class="block statement" tabindex=0>
+	<div title="for .." class="block statement" tabindex=0>
 		for(
-		<span class="block expression" tabindex=0></span>;
-		<span class="block expression" tabindex=0></span>;
-		<span class="block" tabindex=0></span>){
+				<span class="block expression" tabindex=0></span>;
+				<span class="block expression" tabindex=0></span>;
+				<span class="block" tabindex=0></span>){
 			<div class="block" tabindex=0></div>}
 	</div>
 
 	<!-- for of -->
-	<div title="for( .. of .. )" class="block statement" tabindex=0>
+	<div title="for .. of .. " class="block statement" tabindex=0>
 		for(
-		<span class="block expression" tabindex=0></span> of
-		<span class="block expression" tabindex=0></span>){
+				<span class="block expression" tabindex=0></span> of
+				<span class="block expression" tabindex=0></span>){
 			<div class="block" tabindex=0></div>}
 	</div>
 
 	<!-- for in -->
-	<div title="for( .. in .. )" class="block statement" tabindex=0>
+	<div title="for .. in .. " class="block statement" tabindex=0>
 		for(
-		<span class="block expression" tabindex=0></span> in
-		<span class="block expression" tabindex=0></span>){
-		<div class="block" tabindex=0></div>}
+				<span class="block expression" tabindex=0></span> in
+				<span class="block expression" tabindex=0></span>){
+			<div class="block" tabindex=0></div>}
 	</div>
+
+	<!-- while -->
+	<div title="while .. " class="block statement" tabindex=0>
+		while(<span class="block expression" tabindex=0></span>){
+			<div class="block" tabindex=0></div>}
+	</div>
+
+	<!-- do while -->
+	<div title="do .. while .. " class="block statement" tabindex=0>
+		do{
+			<div class="block" tabindex=0></div>
+		}while(
+			<span class="block expression" tabindex=0></span>)
+	</div>
+
+	<!-- if -->
+	<div title="if .." class="block statement" tabindex=0>
+		if(<span class="block expression" tabindex=0></span>){
+			<div class="block" tabindex=0></div>}
+	</div>
+
+	<!-- if else -->
+	<div title="if .. else .." class="block statement" tabindex=0>
+		if(<span class="block expression" tabindex=0></span>){
+			<div class="block" tabindex=0></div>
+		} else {
+			<div class="block" tabindex=0></div>}
+	</div>
+
+	<!-- XXX switch -->
+
+	<!-- XXX function -->
+
 
 </div>
 
