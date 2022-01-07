@@ -135,7 +135,35 @@ window.addEventListener('keydown', function(evt){
 <body>
 
 <div class=templates">
+
+	<!-- for counter -->
+	<div title="for( .. ; .. ; .. )" class="block statement" tabindex=0>
+		for(
+		<span class="block expression" tabindex=0></span>;
+		<span class="block expression" tabindex=0></span>;
+		<span class="block" tabindex=0></span>){
+			<div class="block" tabindex=0></div>}
+	</div>
+
+	<!-- for of -->
+	<div title="for( .. of .. )" class="block statement" tabindex=0>
+		for(
+		<span class="block expression" tabindex=0></span> of
+		<span class="block expression" tabindex=0></span>){
+			<div class="block" tabindex=0></div>}
+	</div>
+
+	<!-- for in -->
+	<div title="for( .. in .. )" class="block statement" tabindex=0>
+		for(
+		<span class="block expression" tabindex=0></span> in
+		<span class="block expression" tabindex=0></span>){
+		<div class="block" tabindex=0></div>}
+	</div>
+
 </div>
+
+
 
 <i>Basic tab-navigation via built-in html mechanics...</i>
 
