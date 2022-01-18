@@ -2,11 +2,6 @@
 <html>
 <style>
 
-.templates {
-	display: none;
-}
-
-
 .block {
 	border: solid 2px transparent;
 	width: fit-content;
@@ -19,6 +14,19 @@ div.block div.block {
 
 .block:focus {
 	border: solid 2px red;
+}
+
+
+.templates {
+}
+
+.templates .block {
+	display: none;
+}
+.templates > div:after {
+	display: block;
+	content: attr(title);
+	margin: 2px;
 }
 
 </style>
@@ -138,53 +146,67 @@ window.addEventListener('keydown', function(evt){
 <div class="templates">
 
 	<!-- for counter -->
-	<div title="for .." class="block statement" tabindex=0>
-		for(<span class="block expression" tabindex=0></span>;
-				<span class="block expression" tabindex=0></span>;
-				<span class="block" tabindex=0></span>){
-			<div class="block" tabindex=0></div>}
+	<div title="for ..">
+		<div class="block statement" tabindex=0>
+			for(<span class="block expression" tabindex=0></span>;
+					<span class="block expression" tabindex=0></span>;
+					<span class="block" tabindex=0></span>){
+				<div class="block" tabindex=0></div>}
+		</div>
 	</div>
 
 	<!-- for of -->
-	<div title="for .. of .. " class="block statement" tabindex=0>
-		for(<span class="block expression" tabindex=0></span> 
-				of <span class="block expression" tabindex=0></span>){
-			<div class="block" tabindex=0></div>}
+	<div title="for .. of .. ">
+		<div class="block statement" tabindex=0>
+			for(<span class="block expression" tabindex=0></span> 
+					of <span class="block expression" tabindex=0></span>){
+				<div class="block" tabindex=0></div>}
+		</div>
 	</div>
 
 	<!-- for in -->
-	<div title="for .. in .. " class="block statement" tabindex=0>
-		for(<span class="block expression" tabindex=0></span> 
-				in <span class="block expression" tabindex=0></span>){
-			<div class="block" tabindex=0></div>}
+	<div title="for .. in .. ">
+		<div class="block statement" tabindex=0>
+			for(<span class="block expression" tabindex=0></span> 
+					in <span class="block expression" tabindex=0></span>){
+				<div class="block" tabindex=0></div>}
+		</div>
 	</div>
 
 	<!-- while -->
-	<div title="while .. " class="block statement" tabindex=0>
-		while(<span class="block expression" tabindex=0></span>){
-			<div class="block" tabindex=0></div>}
+	<div title="while .. ">
+		<div class="block statement" tabindex=0>
+			while(<span class="block expression" tabindex=0></span>){
+				<div class="block" tabindex=0></div>}
+		</div>
 	</div>
 
 	<!-- do while -->
-	<div title="do .. while .. " class="block statement" tabindex=0>
-		do {
-			<div class="block" tabindex=0></div>
-		} while(
-			<span class="block expression" tabindex=0></span>)
+	<div title="do .. while .. ">
+		<div class="block statement" tabindex=0>
+			do {
+				<div class="block" tabindex=0></div>
+			} while(
+				<span class="block expression" tabindex=0></span>)
+		</div>
 	</div>
 
 	<!-- if -->
-	<div title="if .." class="block statement" tabindex=0>
-		if(<span class="block expression" tabindex=0></span>){
-			<div class="block" tabindex=0></div>}
+	<div title="if ..">
+		<div class="block statement" tabindex=0>
+			if(<span class="block expression" tabindex=0></span>){
+				<div class="block" tabindex=0></div>}
+		</div>
 	</div>
 
 	<!-- if else -->
-	<div title="if .. else .." class="block statement" tabindex=0>
-		if(<span class="block expression" tabindex=0></span>){
-			<div class="block" tabindex=0></div>
-		} else {
-			<div class="block" tabindex=0></div>}
+	<div title="if .. else ..">
+		<div class="block statement" tabindex=0>
+			if(<span class="block expression" tabindex=0></span>){
+				<div class="block" tabindex=0></div>
+			} else {
+				<div class="block" tabindex=0></div>}
+		</div>
 	</div>
 
 
@@ -195,16 +217,20 @@ window.addEventListener('keydown', function(evt){
 			...since sequences are often aligned vertically/horizontally
 			would be nice to add this as an option...
 	-->
-	<div title="function() .." class="block expression" tabindex=0>
-		function(<span class="block expression-sequence" tabindex=0></span>){
-			<div class="block" tabindex=0></div>}
+	<div title="function() ..">
+		<div class="block expression" tabindex=0>
+			function(<span class="block expression-sequence" tabindex=0></span>){
+				<div class="block" tabindex=0></div>}
+		</div>
 	</div>
 
 	<!-- function <name> .. -->
-	<div title="function f() .." class="block expression" tabindex=0>
-		function <span class="block expression" tabindex=0></span>
-			(<span class="block expression-sequence" tabindex=0></span>){
-				<div class="block" tabindex=0></div>}
+	<div title="function f() ..">
+		<div class="block expression" tabindex=0>
+			function <span class="block expression" tabindex=0></span>
+				(<span class="block expression-sequence" tabindex=0></span>){
+					<div class="block" tabindex=0></div>}
+		</div>
 	</div>
 
 
