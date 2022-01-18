@@ -2,6 +2,10 @@
 <html>
 <style>
 
+body {
+	font-family: sans-serif;
+}
+
 .block {
 	border: solid 2px transparent;
 	width: fit-content;
@@ -18,15 +22,27 @@ div.block div.block {
 
 
 .templates {
+	float: right;
+	margin: 1em;
 }
-
 .templates .block {
 	display: none;
 }
+.templates > div {
+	width: 100%;
+}
 .templates > div:after {
 	display: block;
-	content: attr(title);
-	margin: 2px;
+	content: attr(name);
+
+	margin: 0.2em;
+	padding: 0.5em;
+
+	background: gray;
+	color: white;
+}
+.templates > div:hover:after {
+	background: silver;
 }
 
 </style>
@@ -146,7 +162,7 @@ window.addEventListener('keydown', function(evt){
 <div class="templates">
 
 	<!-- for counter -->
-	<div title="for ..">
+	<div name="for ..">
 		<div class="block statement" tabindex=0>
 			for(<span class="block expression" tabindex=0></span>;
 					<span class="block expression" tabindex=0></span>;
@@ -156,7 +172,7 @@ window.addEventListener('keydown', function(evt){
 	</div>
 
 	<!-- for of -->
-	<div title="for .. of .. ">
+	<div name="for .. of .. ">
 		<div class="block statement" tabindex=0>
 			for(<span class="block expression" tabindex=0></span> 
 					of <span class="block expression" tabindex=0></span>){
@@ -165,7 +181,7 @@ window.addEventListener('keydown', function(evt){
 	</div>
 
 	<!-- for in -->
-	<div title="for .. in .. ">
+	<div name="for .. in .. ">
 		<div class="block statement" tabindex=0>
 			for(<span class="block expression" tabindex=0></span> 
 					in <span class="block expression" tabindex=0></span>){
@@ -174,7 +190,7 @@ window.addEventListener('keydown', function(evt){
 	</div>
 
 	<!-- while -->
-	<div title="while .. ">
+	<div name="while .. ">
 		<div class="block statement" tabindex=0>
 			while(<span class="block expression" tabindex=0></span>){
 				<div class="block" tabindex=0></div>}
@@ -182,7 +198,7 @@ window.addEventListener('keydown', function(evt){
 	</div>
 
 	<!-- do while -->
-	<div title="do .. while .. ">
+	<div name="do .. while .. ">
 		<div class="block statement" tabindex=0>
 			do {
 				<div class="block" tabindex=0></div>
@@ -192,7 +208,7 @@ window.addEventListener('keydown', function(evt){
 	</div>
 
 	<!-- if -->
-	<div title="if ..">
+	<div name="if ..">
 		<div class="block statement" tabindex=0>
 			if(<span class="block expression" tabindex=0></span>){
 				<div class="block" tabindex=0></div>}
@@ -200,7 +216,7 @@ window.addEventListener('keydown', function(evt){
 	</div>
 
 	<!-- if else -->
-	<div title="if .. else ..">
+	<div name="if .. else ..">
 		<div class="block statement" tabindex=0>
 			if(<span class="block expression" tabindex=0></span>){
 				<div class="block" tabindex=0></div>
@@ -217,7 +233,7 @@ window.addEventListener('keydown', function(evt){
 			...since sequences are often aligned vertically/horizontally
 			would be nice to add this as an option...
 	-->
-	<div title="function() ..">
+	<div name="function() ..">
 		<div class="block expression" tabindex=0>
 			function(<span class="block expression-sequence" tabindex=0></span>){
 				<div class="block" tabindex=0></div>}
@@ -225,7 +241,7 @@ window.addEventListener('keydown', function(evt){
 	</div>
 
 	<!-- function <name> .. -->
-	<div title="function f() ..">
+	<div name="function f() ..">
 		<div class="block expression" tabindex=0>
 			function <span class="block expression" tabindex=0></span>
 				(<span class="block expression-sequence" tabindex=0></span>){
@@ -236,6 +252,10 @@ window.addEventListener('keydown', function(evt){
 
 	<!-- NOTE: we'll deal with switch when it's needed =) -->
 	<!-- XXX need to handle case list... -->
+
+	<!-- new template -->
+	<div name="+" title="add new template">
+	</div>
 </div>
 
 
