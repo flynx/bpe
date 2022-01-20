@@ -19,6 +19,34 @@ div.block div.block {
 .block:focus {
 	border: solid 2px red;
 }
+/* STUB: before/after buttons -- these should be real elements moved with focus... */
+.block:focus:before,
+.block:focus:after {
+	display: block;
+	content: "+";
+
+	position: absolute;
+
+	padding: 0.5em;
+
+	width: 2em;
+
+	text-align: center;
+	font-weight: bold;
+
+
+	background: gray;
+	color: white;
+}
+.block:focus:before {
+	margin-top: -2em;
+}
+.block:focus:after {
+}
+span.block:focus:before,
+span.block:focus:after {
+	display: none;
+}
 
 
 .templates {
@@ -53,6 +81,11 @@ div.block div.block {
 
 .templates > .button {
 	text-align: center;
+}
+
+/* XXX STUB: a bit too general... */
+.templates > .button {
+	border-top: solid 1px silver;
 }
 
 
