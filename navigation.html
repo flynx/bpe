@@ -24,6 +24,9 @@ div.block div.block {
 .templates {
 	float: right;
 	margin: 1em;
+
+	background: gray;
+	color: white;
 }
 .templates .block {
 	display: none;
@@ -38,12 +41,20 @@ div.block div.block {
 	margin: 0.2em;
 	padding: 0.5em;
 
-	background: gray;
-	color: white;
+	font-weight: bold;
 }
 .templates > div:hover:after {
-	background: silver;
+	/*background: silver;*/
+	background: rgba(255, 255, 255, 0.2);
 }
+.templates > div:active:after {
+	background: rgba(255, 255, 255, 0.5);
+}
+
+.templates > .button {
+	text-align: center;
+}
+
 
 </style>
 
@@ -232,7 +243,7 @@ window.addEventListener('keydown', function(evt){
 			...since sequences are often aligned vertically/horizontally
 			would be nice to add this as an option...
 	-->
-	<div name="function() ..">
+	<div name="function( ) ..">
 		<div class="block expression" tabindex=0>
 			function(<span class="block expression-sequence" tabindex=0></span>){
 				<div class="block" tabindex=0></div>}
@@ -240,7 +251,7 @@ window.addEventListener('keydown', function(evt){
 	</div>
 
 	<!-- function <name> .. -->
-	<div name="function f() ..">
+	<div name="function f( ) ..">
 		<div class="block expression" tabindex=0>
 			function <span class="block expression" tabindex=0></span>
 				(<span class="block expression-sequence" tabindex=0></span>){
@@ -253,7 +264,7 @@ window.addEventListener('keydown', function(evt){
 	<!-- XXX need to handle case list... -->
 
 	<!-- new template -->
-	<div name="+" title="add new template">
+	<div name="+" title="add new template" class="new button">
 	</div>
 </div>
 
